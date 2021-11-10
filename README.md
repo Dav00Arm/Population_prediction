@@ -23,7 +23,7 @@ wp.head()
 ```
 (266, 61)
 
-![Data](World.png "World database")
+![Data](images/World.png "World database")
 
 ### World population plot
 ```python
