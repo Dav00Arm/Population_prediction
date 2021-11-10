@@ -35,7 +35,7 @@ ax.fill_between(total_population.columns[::5],list(total_population.values[0])[:
 ax.set_title('Total world population in years', fontsize=18)
 ```
 
-![World](World_population.png "World Population")
+![World](images/World_population.png "World Population")
 
 ### Extracting useless rows
 ```python
@@ -56,7 +56,7 @@ countries = countries.rename(index=correction)
 ```python
 countries[countries.isna().any(axis=1)]
 ```
-![Nan countries](Nans.png "Nans")
+![Nan countries](images/Nans.png "Nans")
 
 ### Filling Nans
 ```python
@@ -72,7 +72,7 @@ countries.loc['Kuwait'] = countries.loc['Kuwait'].fillna(kuwait_avg)
 countries_transpose = countries.T
 countries_transpose
 ```
-![transposed](transposed.png "Transposed")
+![transposed](images/transposed.png "Transposed")
 
 
 ### Converting indexes into datetimes
@@ -83,7 +83,7 @@ countries_transpose.index = pd.to_datetime(countries_transpose.index).year
 ```python
 countries_transpose['Armenia'].plot()
 ```
-![Armenia](Armenia_plot.png "Armenia")
+![Armenia](images/Armenia_plot.png "Armenia")
 
 ### Autocorrelation graph
 ```python
@@ -91,7 +91,7 @@ from pandas.plotting import autocorrelation_plot
 autocorrelation_plot(countries_transpose['Armenia'])
 ```
 
-![Autocorrelation](Autocorrelation.png "Autocorrelation")
+![Autocorrelation](images/Autocorrelation.png "Autocorrelation")
 
 ### First order Differencing
 
@@ -99,7 +99,7 @@ autocorrelation_plot(countries_transpose['Armenia'])
 Armenia_diff = countries_transpose['Armenia'].diff(periods=1)[1:]
 ```
 
-![Armenia_diff](diff.png "Armenia")
+![Armenia_diff](images/diff.png "Armenia")
 
 ### Building Model
 
@@ -117,7 +117,7 @@ model = pm.auto_arima(countries_transpose['Armenia'], start_p=1, start_q=1,test=
              
 print(model.summary())
 ```
-![model_summary](summary.png "model_summary")
+![model_summary](images/summary.png "model_summary")
 
 
 ### Predicting and putting values in Series
@@ -142,7 +142,7 @@ plt.fill_between(lower_series.index,
 plt.title("Final Forecast")
 plt.show()
 ```
-![forecast](forecast.png "forecast")
+![forecast](images/forecast.png "forecast")
 
 ### Forecasted values
 
@@ -151,22 +151,22 @@ preds = pd.concat({'forecast':forecast_series,'lower border': lower_series, 'upp
 preds.astype('int')
 ```
 
-![forecast values](D:Desktop\forecast_values.png "forecast values")
+![forecast values](images/forecast_values.png "forecast values")
 
 # Some comperisons with [PopulationPyramid.net](https://www.populationpyramid.net/)
 
 ## My prediction of Armenia
 
-![My Armenia](our_Armenia.png "My Armenia")
+![My Armenia](images/our_Armenia.png "My Armenia")
 
 ## PopulationPyramid.net prediction
 
-![Armenia](Armenia.png "Armenia")
+![Armenia](images/Armenia.png "Armenia")
 
 ## My prediction of Kuwait
 
-![My Kuwait](our_Kuwait.png "My Kuwait")
+![My Kuwait](images/our_Kuwait.png "My Kuwait")
 
 ## PopulationPyramid.net prediction
 
-![Kuwait](Kuwait.png "Kuwait")
+![Kuwait](images/Kuwait.png "Kuwait")
