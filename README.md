@@ -1,6 +1,6 @@
 # Population Prediction (Time Series)
 
-Prediction of any countrie's or world population using 1960-2020 years modified data from [The World Bank data](https://data.worldbank.org/indicator/SP.POP.TOTL)
+Prediction of any countrie's population using 1960-2020 years modified data from [The World Bank data](https://data.worldbank.org/indicator/SP.POP.TOTL)
 
 ### Run program
 ```bash
